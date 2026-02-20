@@ -58,18 +58,19 @@
     <audio data-key="76" src="sounds/tink.wav"></audio>
 
     <script>
-        window.addEventListener('keydown', function (e) {
+        
+        const main = (e) => {
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
             const key = document.querySelector(`.key[data-key="${e.keyCode}"]`); //selects class of key
             key.classList.add('playing'); // adding the class
 
             if(!audio) return; // stop function from running all together
-            audio.currentTime = 0; //enables us to play over and over again
+            audio.currentTime = 0; //enables us to play over and over again by returning th audio time to 0a
 
             audio.play()
             // console.log(audio) //shows the audio tag
             // console.log(key) //shows the class that has been selected
-        });
+        };
 
         const removeTransition = (e) => {
             if(e.propertyName !== 'transform') return;
@@ -78,6 +79,7 @@
         };
 
         const keys = document.querySelectorAll('.key').forEach(key => key.addEventListener('transitionend', removeTransition));
+        window.addEventListener('keydown', main);
 
     </script>
 </body>
