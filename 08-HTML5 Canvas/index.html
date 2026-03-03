@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <title>HTML5 Canvas</title>
+</head>
+<body>
+    <style>
+        html, body {
+            margin: 0;
+        }
+    </style>
+
+    <canvas id="draw" width="800" height="800"></canvas>
+
+    <script>
+        const canvas = document.getElementById('draw');
+        const canva = canvas.getContext('2d'); //returns a drawing context on the canvas
+        canvas.height = window.innerHeight;
+        canvas.width = window.innerWidth;
+
+        canva.strokeStyle = '#BADA55';//color
+        canava.lineJoin = 'round';//when line meets another line
+        canva.lineCap = 'round';//when line starts
+
+        let isDrawing = false;//sets our stage for when the canvas should be drawn upon.
+        let lastX = 0;
+        let lastY = 0; //when to start and when to finish on the drawing
+
+        function draw(e) {
+            console.log(e)
+        }
+
+        canvas.addEventListener('mousemove', draw);
+    </script>
+</body>
+</html>
