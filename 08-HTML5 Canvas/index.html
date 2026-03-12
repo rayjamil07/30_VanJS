@@ -18,6 +18,8 @@
     <script>
         const canvas = document.getElementById('draw');
         const canva = canvas.getContext('2d'); //returns a drawing context on the canvas
+
+        //setting our canvas so that it fits all widths and heights
         canvas.height = window.innerHeight;
         canvas.width = window.innerWidth;
 
@@ -26,14 +28,50 @@
         canva.lineCap = 'round';//when line starts
 
         let isDrawing = false;//sets our stage for when the canvas should be drawn upon.
+
+        //when to start and when to finish on the drawing
         let lastX = 0;
-        let lastY = 0; //when to start and when to finish on the drawing
+        let lastY = 0; 
+        let hue = 0;
 
         function draw(e) {
-            console.log(e)
+            if(!isDrawing) return;
+
+            canva.strokeStyle = `${hue}, 100%, 50%`; //we set it before we go to the color itself
+            canva.beginPath();
+            canva.moveTo(lastX, lastY);
+            canva.lineTo(e.offsetX, e.offsetY);//offsets being events that we are listening to??...last positions of the mouse
+            canva.stroke();//used together with linejoin, more research needs to be done on it.
+
+            [lastX, lastY] = [e.offsetX. e.offsetY];//updates mouse movement to where mouse was and not zero
+            hue++; //increases our hue
+            if (hue > 360) {
+                return hue = 0;
+            }
+
+            //lets deal with the linewidth to be able to flip direction either way
+            if(canva.lineWidth >= 100 || canva.lineWidth <= 1) {
+                direction = !direction
+            }
+
+            if(direction) {
+                canva.lineWidth++;
+            } else {
+                canva.lineWidth--;
+            }
+
         }
+        canvas.addEventListener('mousedown', () => {
+            isDrawing = true;
+
+            //lets update the last movement of the mouse
+            [lastX, lastY] = [e.offsetX. e.offsetY];
+        });
 
         canvas.addEventListener('mousemove', draw);
+        
+        canvas.addEventListener('mouseout', () => isDrawing = false);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
     </script>
 </body>
 </html>

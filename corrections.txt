@@ -1,0 +1,8 @@
+Mistakes:
+1. Wrong use of let and const. Const cannot be changed when it is used on a variable.
+2. Chech properly use of html tags, causes problems in calling the tag.
+3. Setting context properly, this will bring about confusion.
+4. Use of semicolons, not using will cause functions not to be called.
+
+5. Learning the difference in tags e.g use of querySelector and querySelectorAll.
+6. Scope, items to constantly be referenced to should be placed on the outer scope.

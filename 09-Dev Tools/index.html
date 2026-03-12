@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p onCLick='makeGreen()'>BREAKDOWN</p>
+
+    <script>
+        const p = document.querySelector('p');
+
+        function makeGreen() {
+            p.style.color = '#BADA55';
+            p.style.font = '10px';
+        }
+
+        const cats = [{name: "Ahedo", age: "10"}, {name: "Martinees", age: "12"}];
+
+        console.table(cats)
+        console.warn('cats might be faster than you');
+        console.error('cats are not intelligent!!');
+        console.info('cats dont have nine lives!');
+        console.log(p)
+        console.dir(p);
+        console.clear()
+
+        console.time('getting data')
+        fetch('https://api.github.com/users/wesbos')
+            .then(data => data.json())
+            .then(() => {
+                console.timeEnd('getting data')
+            });
+    </script>
+</body>
+</html>
