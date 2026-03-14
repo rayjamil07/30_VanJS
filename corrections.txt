@@ -6,3 +6,6 @@ Mistakes:
 
 5. Learning the difference in tags e.g use of querySelector and querySelectorAll.
 6. Scope, items to constantly be referenced to should be placed on the outer scope.
+
+7. Learning how to use console.log inorder to debug and get our datasets.
+8. How to use a .gitignore file
