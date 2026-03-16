@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const pressed = [];
+        const secretCode = 'cyrus';
+
+        window.addEventListener('keyup', (e) => {
+            //let's push our letters to an array
+            pressed.push(e.key);
+
+            //checking our letters from the back
+            pressed.splice(-secretCode.length -1, pressed.length - secretCode.length);
+
+            //turn the letters to a string and check if it is the same as our secretCode
+            if (pressed.join('').includes(secretCode)) {
+                console.log('Ding Ding');
+            }
+    
+        })
+    </script>
+</body>
+</html>
